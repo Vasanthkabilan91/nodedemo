@@ -4,27 +4,23 @@ kind: ReplicationController
 metadata:
   labels:
     name: nodeapp
-  name: node-controller
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: nodeapp
+        app: nodeapp
     spec:
       containers:
       - image: vasanthkabilan91/mynode:0.0.2
         name: nodeapp
         ports:
-        - name: nodeapp
-          containerPort: 3000  
+        - containerPort: 3000  
 ---
 # Node Port Service
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    name: nodeapp
   name: nodeapp
 spec:
   type: NodePort
@@ -32,4 +28,4 @@ spec:
     - port: 3000
       targetPort: 3000
   selector:
-    name: nodeapp
+    app: nodeapp
