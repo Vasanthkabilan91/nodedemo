@@ -14,7 +14,7 @@ spec:
       - image: vasanthkabilan91/mynode:0.0.2
         name: nodeapp
         ports:
-        - containerPort: 3000  
+        - containerPort: 5000  
 ---
 # Node Port Service
 apiVersion: v1
@@ -24,7 +24,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 3000
-      targetPort: 3000
+    - port: 5000
+      targetPort: 5000
   selector:
     app: nodeapp
