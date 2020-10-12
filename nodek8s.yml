@@ -1,22 +1,21 @@
-apiVersion: apps/v1
+apiVersion: v1
 kind: ReplicationController
 metadata:
-  labels:
-    name: nodeapp
   name: node-controller
 spec:
   replicas: 1
+  selector:
+    app: nodedemo
   template:
     metadata:
       labels:
-        name: nodeapp
+        app: nodedemo
     spec:
       containers:
-      - image: dockerhandson/java-web-app
-        name: nodeapp
+      - image: vasanthkabilan91/mynode:0.0.2
+        name: nodedemo
         ports:
-        - name: nodeapp
-          containerPort: 5000 
+        - containerPort: 5000  
 ---
 # Node Port Service
 apiVersion: v1
