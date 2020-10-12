@@ -17,7 +17,7 @@ spec:
         name: nodeapp
         ports:
         - name: nodeapp
-          containerPort: 5000  
+          containerPort: 8080  
 ---
 # Node Port Service
 apiVersion: v1
@@ -29,7 +29,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 5000
-      targetPort: 5001
+    - port: 8080
+      targetPort: 8080
   selector:
     name: nodeapp
